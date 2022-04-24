@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.util.Collections;
@@ -48,9 +49,15 @@ public class JukeBoxController {
     @RequestMapping(method = RequestMethod.GET, value = "getSupportedJukeBoxes")
     public ResponseDto<List<JukeBoxResponseData>> getSupportedJukeBoxes(@RequestParam(value = "settingId") String settingId, @RequestParam(value = "model", required = false) String model,
                                                                              @RequestParam(value = "offset", required = false) Long offset, @RequestParam(value = "limit", required = false) Long limit){
+        log.info("Request received to fet jukeboxes for setting id :: " + settingId);
         try{
             List<JukeBoxResponseData> jukeBoxResponseData = jukeBoxHelper.getSupportedJukeBoxes(settingId, model, offset, limit);
+            log.info("Request successfully completed to fetch jukeboxes for setting id :: " + settingId);
             return new ResponseDto<>(jukeBoxResponseData);
+        }
+        catch (ResponseStatusException e){
+            log.error("Invalid Setting Id :: " + settingId);
+            throw e;
         }
         catch (Exception e){
             log.error("Error while fetching eligible jukeboxes for setting id " + settingId + " :: "  + e );
