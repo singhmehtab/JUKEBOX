@@ -1,11 +1,12 @@
 # JUKEBOX
 ------------------------------------------
-#Description
+Description
 This project exposes a GET API that provides list of jukeboxes according to 
 provided setting id and other filter options.
 This Project make used of mocked api of jukebox data and settings data.
+
 ------------------------------------------
-## API Spec
+API Spec
 Request Params -> 
 1. settingId
 2. model(Optional)
@@ -19,6 +20,7 @@ Curl of the API ->
 
 curl --location --request GET 'localhost:8080/jukeBoxes/getSupportedJukeBoxes?settingId=2321763c-8e06-4a31-873d-0b5dac2436da' \
 --header 'ACCESS_TOKEN: apiToken'
+
 -------------------------------------------
 #Authentication Headers
 
