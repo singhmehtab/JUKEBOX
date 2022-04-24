@@ -1,0 +1,44 @@
+[
+  {
+    "id": "5ca94a8a77e20d15a7d16d0a",
+    "model": "angelina",
+    "components": [
+      {
+        "name": "pcb"
+      },
+      {
+        "name": "money_pcb"
+      },
+      {
+        "name": "touchscreen"
+      },
+      {
+        "name": "speaker"
+      },
+      {
+        "name": "speaker"
+      }
+    ]
+  },
+  {
+    "id": "5ca94a8acc046e7aa8040605",
+    "model": "angelina",
+    "components": [
+      {
+        "name": "money_receiver"
+      },
+      {
+        "name": "led_matrix"
+      },
+      {
+        "name": "speaker"
+      },
+      {
+        "name": "touchscreen"
+      },
+      {
+        "name": "money_pcb"
+      }
+    ]
+  }
+]
