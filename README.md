@@ -5,7 +5,7 @@ Description
 
 This project exposes a GET API that provides list of jukeboxes according to 
 provided setting id and other filter options.
-This Project make used of mocked api of jukebox data and settings data.
+This Project makes use of mocked api of jukebox data and settings data.
 
 ------------------------------------------
 
