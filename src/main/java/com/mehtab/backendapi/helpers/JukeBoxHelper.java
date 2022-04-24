@@ -1,4 +1,4 @@
-package com.mehtab.backendapi.controller;
+package com.mehtab.backendapi.helpers;
 
 import com.mehtab.backendapi.proxy.JukeBox;
 import com.mehtab.backendapi.proxy.JukeBoxResponseData;
@@ -15,17 +15,35 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * The type Juke box helper.
+ * @author mehtab singh
+ */
 @Service
 @NoArgsConstructor
 public class JukeBoxHelper {
 
     private JukeBox jukeBox;
 
+    /**
+     * Instantiates a new Juke box helper.
+     *
+     * @param jukeBox the juke box
+     */
     @Autowired
     public JukeBoxHelper(JukeBox jukeBox){
         this.jukeBox = jukeBox;
     }
 
+    /**
+     * Get supported juke boxes list.
+     *
+     * @param settingId the setting id
+     * @param model     the model
+     * @param offset    the offset
+     * @param limit     the limit
+     * @return the list
+     */
     public List<JukeBoxResponseData> getSupportedJukeBoxes(String settingId, String model, Long offset, Long limit){
 
         JukeBoxSettingsResponseData jukeBoxSettingsResponseData = jukeBox.getJukeBoxSettingsData();
@@ -36,6 +54,17 @@ public class JukeBoxHelper {
 
     }
 
+    /**
+     * Filter supported juke boxes list.
+     *
+     * @param requiredComponents  the required components
+     * @param jukeBoxResponseData the juke box response data
+     * @param model               the model
+     * @param offset              the offset
+     * @param limit               the limit
+     * @return the list
+     * Order of returned juke boxes is in accordance with the data as fetched from juke box apis.
+     */
     public List<JukeBoxResponseData> filterSupportedJukeBoxes(List<String> requiredComponents, ArrayList<JukeBoxResponseData> jukeBoxResponseData, String model, Long offset, Long limit){
 
         List<JukeBoxResponseData> filteredJukeBoxes = jukeBoxResponseData.stream().filter(data -> data.getComponents().stream().map(JukeBoxResponseData.Component::getName).collect(Collectors.toList()).containsAll(requiredComponents)).collect(Collectors.toList());
@@ -51,6 +80,12 @@ public class JukeBoxHelper {
         return  filteredJukeBoxes;
     }
 
+    /**
+     * Get required components list.
+     *
+     * @param settingsData the settings data
+     * @return the list
+     */
     public List<String> getRequiredComponents(Optional<JukeBoxSettingsResponseData.SettingsData> settingsData){
         if(!settingsData.isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Setting Id is not valid");

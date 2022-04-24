@@ -2,7 +2,7 @@ package com.mehtab.backendapi;
 
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.mehtab.backendapi.controller.JukeBoxHelper;
+import com.mehtab.backendapi.helpers.JukeBoxHelper;
 import com.mehtab.backendapi.proxy.JukeBoxResponseData;
 import com.mehtab.backendapi.proxy.JukeBoxSettingsResponseData;
 import com.mehtab.backendapi.utility.JsonMapper;
@@ -10,8 +10,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.skyscreamer.jsonassert.JSONAssert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
@@ -32,7 +30,7 @@ public class JukeBoxControllerTest {
 
         @Before
         public void setUp() {
-                jukeBoxHelper = new com.mehtab.backendapi.controller.JukeBoxHelper();
+                jukeBoxHelper = new JukeBoxHelper();
         }
 
         @Test

@@ -8,6 +8,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * The type Auth interceptor.
+ */
 @Slf4j
 @Component
 public class AuthInterceptor implements HandlerInterceptor {

@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * The type Juke box response data.
+ * @author mehtab singh
+ */
 @Getter
 @Builder
 @NoArgsConstructor
@@ -39,6 +43,9 @@ public class JukeBoxResponseData implements Serializable {
                 && otherObject.getComponents().stream().map(Component::getName).collect(Collectors.toList()).equals(this.getComponents().stream().map(Component::getName).collect(Collectors.toList()));
     }
 
+    /**
+     * The type Component.
+     */
     @Getter
     @Builder
     @AllArgsConstructor

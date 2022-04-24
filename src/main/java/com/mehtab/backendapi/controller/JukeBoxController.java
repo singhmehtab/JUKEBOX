@@ -1,6 +1,7 @@
 package com.mehtab.backendapi.controller;
 
 import com.mehtab.backendapi.controller.dto.ResponseDto;
+import com.mehtab.backendapi.helpers.JukeBoxHelper;
 import com.mehtab.backendapi.proxy.JukeBoxResponseData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ import java.util.Collections;
 import java.util.List;
 
 
+/**
+ * The type Juke box controller.
+ * @author mehtab singh
+ */
 @RestController
 @RequestMapping("/jukeBoxes")
 @Slf4j
@@ -21,11 +26,25 @@ public class JukeBoxController {
 
     private final JukeBoxHelper jukeBoxHelper;
 
+    /**
+     * Instantiates a new Juke box controller.
+     *
+     * @param jukeBoxHelper the juke box helper
+     */
     @Autowired
     public JukeBoxController(JukeBoxHelper jukeBoxHelper){
         this.jukeBoxHelper = jukeBoxHelper;
     }
 
+    /**
+     * Gets supported juke boxes.
+     *
+     * @param settingId the setting id
+     * @param model     the model
+     * @param offset    the offset
+     * @param limit     the limit
+     * @return the supported juke boxes
+     */
     @RequestMapping(method = RequestMethod.GET, value = "getSupportedJukeBoxes")
     public ResponseDto<List<JukeBoxResponseData>> getSupportedJukeBoxes(@RequestParam(value = "settingId") String settingId, @RequestParam(value = "model", required = false) String model,
                                                                              @RequestParam(value = "offset", required = false) Long offset, @RequestParam(value = "limit", required = false) Long limit){

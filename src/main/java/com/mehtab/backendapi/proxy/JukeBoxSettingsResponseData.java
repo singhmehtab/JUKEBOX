@@ -11,6 +11,10 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * The type Juke box settings response data.
+ * @author mehtab singh
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -23,6 +27,9 @@ public class JukeBoxSettingsResponseData implements Serializable {
     private ArrayList<SettingsData> settingsData;
 
 
+    /**
+     * The type Settings data.
+     */
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
